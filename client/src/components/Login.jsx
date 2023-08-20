@@ -51,12 +51,12 @@ export default function Login() {
 			});
 			const respObj = await resp.json();
 
-			console.log(respObj.mess) // <-- do sth on error
-
 			if(respObj.mess == 'Login successful') {
 				window.localStorage.setItem('accToken', respObj.token);
-				setLoggedIn('Token validated');
+				setLoggedIn(true);
 			}
+
+			console.log(respObj.mess) // <-- do sth on error
 		}
 		loginAPI();
 	}
@@ -65,7 +65,7 @@ export default function Login() {
 		validateToken(setLoggedIn);
 	}, []);
 
-	if(loggedIn == 'Token validated') return <Navigate to="/" />
+	if(loggedIn) return <Navigate to="/" />
 	else return (
 		<div className="bg-gray-500 w-screen h-screen">
 			<h2>Înregistrează-te</h2>

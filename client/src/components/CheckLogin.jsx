@@ -10,6 +10,6 @@ export default function CheckLogin({ children }) {
     }, []);
 
     if (loggedIn == null) return <p>Loading...</p>;
-    else if (loggedIn == 'Token validated') return children;
+    else if (loggedIn == true) return children;
     else return <Navigate to='/login' />;
 }
